@@ -66,7 +66,7 @@ class BinshopsReaderController extends Controller
             $posts = BinshopsPostTranslation::where('lang_id', $request->get("lang_id"))
                 ->with('post')
                 ->join('binshops_posts', 'binshops_post_translations.post_id', '=', 'binshops_posts.id')
-                ->orderBy('binshops_posts.posted_at', 'ASC')
+                ->orderBy('binshops_posts.posted_at', 'DESC')
                 ->where('binshops_posts.is_published', true)
                 ->where('binshops_posts.posted_at', '<', Carbon::now()->format('Y-m-d H:i:s'))
                 ->get();
